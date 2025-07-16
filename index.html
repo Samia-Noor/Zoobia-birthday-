@@ -125,8 +125,13 @@ h1, h2 {
   <p>From silly giggles to deep conversations, you're the kind of person that brings light into every room. I'm grateful for the bond we've built. Here's to many more years of friendship, memories, and sisterhood. 🤍</p>
 </div>
 
-<footer style="margin-top: 40px; font-size: 0.9em; color: #999;">
-  Website created with joy by Samia Noor 💜
+<div class="section">
+  <h2>📤 Share This Page</h2>
+  <button class="btn" onclick="sharePage()">Share via WhatsApp</button>
+</div>
+
+<footer style="margin-top: 40px; font-size: 0.95em; color: #999;">
+  <strong>Website created with joy and love by Samia Noor for you, Zoobia 💜</strong>
 </footer>
 
   </div>  <script>
@@ -170,6 +175,12 @@ h1, h2 {
 
     function toggleMode() {
       document.body.classList.toggle('dark-mode');
+    }
+
+    function sharePage() {
+      const url = window.location.href;
+      const text = `🎉 Wish Zoobia a magical birthday! Click here: ${url}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     // Countdown Timer

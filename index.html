@@ -1,136 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🎉 Happy Birthday Zoobia 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-color: #8e9eab;
-      --secondary-color: #eef2f3;
-      --accent-color: #596164;
+      --main-color: #a18cd1;
+      --secondary-color: #fbc2eb;
+      --accent-color: #f093fb;
       --text-dark: #222;
       --text-light: #fff;
-      --highlight: #e0c3fc;
-    }
+      --highlight: #ffd6e8;
+      --dark-bg: #1e1e2f;
+      --dark-text: #f5f5f5;
+      --dark-section: #2e2e3e;
+    }* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, var(--secondary-color), #fff);
-      color: var(--text-dark);
-    }
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, var(--secondary-color), var(--main-color));
+  color: var(--text-dark);
+  transition: 0.4s ease-in-out;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
+.dark-mode {
+  background: linear-gradient(135deg, var(--dark-bg), #000);
+  color: var(--dark-text);
+}
 
-    h1 {
-      font-size: 2.5em;
-      color: var(--accent-color);
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
 
-    h2 {
-      color: var(--main-color);
-      margin-top: 2em;
-    }
+h1, h2 {
+  color: var(--accent-color);
+}
 
-    .section {
-      margin: 30px 0;
-      padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
+.section {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
 
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      background-color: var(--main-color);
-      color: white;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 5px;
-      transition: 0.3s ease;
-    }
+.dark-mode .section {
+  background: var(--dark-section);
+}
 
-    .btn:hover {
-      background-color: var(--accent-color);
-    }
+.btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.3s ease;
+}
 
-    .hidden {
-      display: none;
-      margin-top: 10px;
-      font-style: italic;
-    }
+.btn:hover {
+  background-color: var(--accent-color);
+}
 
-    .countdown {
-      font-weight: bold;
-      font-size: 1.2em;
-      color: var(--accent-color);
-    }
+.hidden {
+  display: none;
+  margin-top: 10px;
+  font-style: italic;
+}
 
-    .fun-box {
-      background-color: var(--highlight);
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 8px;
-      font-style: italic;
-    }
+.countdown {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: var(--accent-color);
+}
+
+.fun-box {
+  background-color: var(--highlight);
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 8px;
+  font-style: italic;
+  color: #333;
+}
+
+.dark-mode .fun-box {
+  background-color: #3d3d5c;
+  color: var(--dark-text);
+}
+
   </style>
 </head>
 <body>
   <div class="container">
+    <button class="btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
     <h1>🎂 Happy Birthday Zoobia! 🎂</h1>
-    <p>You are not just my cousin, you're my soul-sister, my best friend, my partner, and the reason my life is extra fun. Here's a website just for YOU 💖</p>
+    <p>You are the sparkle in ordinary days, a blessing wrapped in laughter and care. Here's a birthday gift from the heart ❤️</p><div class="section">
+  <h2>⏳ Countdown to Your Day</h2>
+  <div class="countdown" id="countdown"></div>
+</div>
 
-    <div class="section">
-      <h2>⏳ Countdown to Your Special Day</h2>
-      <div class="countdown" id="countdown"></div>
-    </div>
+<div class="section">
+  <h2> Special Messages</h2>
+  <div id="messages"></div>
+</div>
 
-    <div class="section">
-      <h2>💬 Sisterly Messages</h2>
-      <div id="messages"></div>
-    </div>
+<div class="section">
+  <h2> Fun Facts About Zoobia</h2>
+  <div class="fun-box" id="factBox">Click below to see fun facts 😊</div>
+  <button class="btn" onclick="showFact()">Reveal a Fun Fact</button>
+</div>
 
-    <div class="section">
-      <h2>🌈 Fun Facts About Zoobia</h2>
-      <div class="fun-box" id="factBox">Click below to read sweet facts about our bond 💕</div>
-      <button class="btn" onclick="showFact()">Show Fun Fact</button>
-    </div>
+<div class="section">
+  <h2>🌺 A Special Note</h2>
+  <p>From silly giggles to deep conversations, you're the kind of person that brings light into every room. I'm grateful for the bond we've built. Here's to many more years of friendship, memories, and sisterhood. 🤍</p>
+</div>
 
-    <div class="section">
-      <h2>🌟 Why You're So Special</h2>
-      <ul style="text-align:left; max-width:600px; margin:auto;">
-        <li>You're loyal, kind, and always supportive 💪</li>
-        <li>You make everyone feel special just by being there ✨</li>
-        <li>You bring energy and fun wherever you go 😄</li>
-        <li>You're the kind of person I brag about having in my life 💕</li>
-      </ul>
-    </div>
+<footer style="margin-top: 40px; font-size: 0.9em; color: #999;">
+  Website created with joy by Samia Noor 💜
+</footer>
 
-    <div class="section">
-      <h2>📤 Share this Page</h2>
-      <button class="btn" onclick="sharePage()">Share via WhatsApp</button>
-    </div>
-
-    <footer style="margin-top: 40px; font-size: 0.9em; color: #999;">
-      Created with love, pride, and joy by Samia Noor 💜
-    </footer>
-  </div>
-
-  <script>
+  </div>  <script>
     const messages = [
-      "You're not just my cousin— you're my forever friend 💕",
-      "With you, even the most boring moments become golden ✨",
-      "Zoobia, you make kindness look effortless.",
-      "You're younger than me by 314 days, but your heart is wise beyond years 🌟",
-      "I admire you deeply and secretly wish I was more like you!"
+      "May your birthday be filled with success, joy, and meaningful moments.",
+      "You're fun, fearless, and full of life.",
+      "You are one in a million, Zoobia.",
+      "No matter the distance, you're always close to my heart.",
+      "I'm so lucky to have a cousin and best friend like you."
     ];
 
     const msgContainer = document.getElementById("messages");
@@ -151,11 +156,10 @@
     });
 
     const facts = [
-      "Zoobia finds joy in reading, and her love for books reflects the depth of her thoughts and imagination.",
-      "Her ability to uplift others with her words is truly admirable. Her words have the power to heal, offering comfort and hope exactly when it’s needed most. 💬",
-      "She approaches every challenge with remarkable grace and maturity.",
-      "Zoobia’s dedication to her goals is inspiring and commendable.",
-      "She balances her life with maturity and joy, proving that being focused and full of life can go hand in hand. ✨"
+      "Zoobia loves reading and has a magical way with words.",
+      "She’s full of grace, courage, and quiet strength.",
+      "The things I can't share with anyone, I can share with her.",
+      "We went from silent nods in childhood to loud laughs and endless chats now."
     ];
 
     function showFact() {
@@ -164,7 +168,11 @@
       box.innerText = random;
     }
 
-    // Countdown
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Countdown Timer
     const bday = new Date('July 24, 2026 00:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -175,12 +183,5 @@
       const s = Math.floor((diff % (1000 * 60)) / 1000);
       document.getElementById('countdown').innerText = `${d}d ${h}h ${m}m ${s}s until Zoobia's birthday! 🎂`;
     }, 1000);
-
-    function sharePage() {
-      const url = window.location.href;
-      const text = `🎉 Wish Zoobia a magical birthday! 💜 Click here: ${url}`;
-      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-    }
-  </script>
-</body>
-</html>
+  </script></body>
+  </html>
